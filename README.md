@@ -19,6 +19,25 @@ Give a LogicScript specification to an AI code generator, and it produces idioma
 
 ---
 
+## Prompt template
+
+Use this pattern for consistent AI output:
+
+```
+Implement the following LogicScript specification in [TARGET LANGUAGE].
+
+Rules:
+- Honor every VALIDATE condition as a precondition check.
+- Map ON FAIL clauses to the language's error/exception mechanism.
+- Translate EMIT to the appropriate event or message-bus call.
+- Add inline comments for non-obvious decisions.
+- Do not add behavior not described in the specification.
+
+[LOGICSCRIPT SPECIFICATION]
+```
+
+---
+
 ## Quickstart
 
 ### Step 1: Define a data shape
@@ -440,25 +459,6 @@ export async function sessionCleanup(): Promise<void> {
   });
   logger.info(`Purged ${count} expired sessions`);
 }
-```
-
----
-
-## Prompt template
-
-Use this pattern for consistent AI output:
-
-```
-Implement the following LogicScript specification in [TARGET LANGUAGE].
-
-Rules:
-- Honor every VALIDATE condition as a precondition check.
-- Map ON FAIL clauses to the language's error/exception mechanism.
-- Translate EMIT to the appropriate event or message-bus call.
-- Add inline comments for non-obvious decisions.
-- Do not add behavior not described in the specification.
-
-[LOGICSCRIPT SPECIFICATION]
 ```
 
 ---
