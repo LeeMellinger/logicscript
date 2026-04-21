@@ -158,7 +158,7 @@ LogicScript makes three intentional trade-offs:
 
 ---
 
-## TypeScript example
+## TypeScript AI prompt example
 
 The following LogicScript specification produces the TypeScript implementation below it when passed to an AI with the prompt: *"Implement this LogicScript in TypeScript (Node.js). Use Prisma for database access, bcryptjs for password hashing, and a simple EventEmitter for events."*
 
