@@ -17,26 +17,6 @@ Give a LogicScript specification to an AI code generator, and it produces idioma
 
 > **Note:** LogicScript is a specification language, not an execution runtime. It has no interpreter. Its output is always AI-generated code in a target language.
 
-
----
-
-## AI prompt template
-
-Use this pattern for consistent AI output:
-
-```
-Implement the following LogicScript specification in [TARGET LANGUAGE].
-
-Rules:
-- Honor every VALIDATE condition as a precondition check.
-- Map ON FAIL clauses to the language's error/exception mechanism.
-- Translate EMIT to the appropriate event or message-bus call.
-- Add inline comments for non-obvious decisions.
-- Do not add behavior not described in the specification.
-
-[LOGICSCRIPT SPECIFICATION]
-```
-
 ---
 
 ## Quickstart
@@ -178,7 +158,53 @@ LogicScript makes three intentional trade-offs:
 
 ---
 
-## TypeScript AI prompt example
+## Python example
+
+The simplest possible LogicScript specification — a function that prints a greeting — illustrates how even trivial logic maps cleanly to generated output.
+
+### LogicScript specification
+
+```
+FUNC greet(name)
+  VALIDATE
+    name not empty
+
+  DO
+    message = "Hello, " + name + "."
+    PRINT message
+
+  RETURN message
+```
+
+### Generated Python output
+
+```python
+# Generated from LogicScript — greet
+
+def greet(name: str) -> str:
+    """Prints a greeting and returns the message string.
+
+    Raises:
+        ValueError: If name is empty.
+    """
+    # VALIDATE: name not empty
+    if not name or not name.strip():
+        raise ValueError("name must not be empty")
+
+    # DO: build and print the message
+    message = f"Hello, {name}."
+    print(message)
+
+    return message
+
+
+if __name__ == "__main__":
+    print(greet("world"))   # Hello, world.
+```
+
+---
+
+## TypeScript example
 
 The following LogicScript specification produces the TypeScript implementation below it when passed to an AI with the prompt: *"Implement this LogicScript in TypeScript (Node.js). Use Prisma for database access, bcryptjs for password hashing, and a simple EventEmitter for events."*
 
@@ -414,6 +440,25 @@ export async function sessionCleanup(): Promise<void> {
   });
   logger.info(`Purged ${count} expired sessions`);
 }
+```
+
+---
+
+## Prompt template
+
+Use this pattern for consistent AI output:
+
+```
+Implement the following LogicScript specification in [TARGET LANGUAGE].
+
+Rules:
+- Honor every VALIDATE condition as a precondition check.
+- Map ON FAIL clauses to the language's error/exception mechanism.
+- Translate EMIT to the appropriate event or message-bus call.
+- Add inline comments for non-obvious decisions.
+- Do not add behavior not described in the specification.
+
+[LOGICSCRIPT SPECIFICATION]
 ```
 
 ---
