@@ -4,7 +4,9 @@
 
 > This guide is for power users who want to write LogicScript specifications without a programming background. You do not need to know how to code. LogicScript is a structured way of describing *what* you want software to do — an AI handles the coding.
 >
-> For the full technical specification and formal grammar, see **logicscript-reference.md**.
+> Technical specification and formal grammar: [logicscript-reference.md]().
+>
+> Examples: [logicscript-examples.md]()
 
 ---
 
@@ -72,7 +74,7 @@ FUNC login(email, password)
 ## How it works
 
 1. **You write a spec** in LogicScript describing the system's rules and behaviors.
-2. **You give the spec to an AI** (Claude, GPT-4, etc.) with an instruction like: *"Implement this LogicScript specification in Python."*
+2. **You give the spec to an AI** (Claude, GPT-4, etc.) with an instruction like:*"Implement this LogicScript specification in Python."*
 3. **The AI produces working code** that follows your spec exactly.
 4. A developer reviews and deploys the code.
 
@@ -84,7 +86,7 @@ You stay in control of the *rules*. The AI handles the *implementation*.
 
 A LogicScript spec looks like this. Notice:
 
-- **Keywords are ALL CAPS** — `SHAPE`, `FUNC`, `VALIDATE`, etc.
+- **Keywords are ALL CAPS** —`SHAPE`,`FUNC`,`VALIDATE`, etc.
 - **Indentation matters** — two spaces per level, like a bullet list
 - **Plain English is fine** inside any block
 - **Comments start with `--`**
@@ -123,21 +125,21 @@ That is a complete, usable specification. An AI can turn that into production co
 
 ## Building blocks at a glance
 
-| Keyword | What it describes | Plain-English analogy |
-| --- | --- | --- |
-| `SHAPE` | A type of record or object | A form template |
-| `FUNC` | An action the system can perform | A procedure in an SOP |
-| `FLOW` | A multi-step process | A flowchart |
-| `VALIDATE` | Rules that must be true before an action runs | Pre-flight checklist |
-| `DO` | The steps that happen during an action | The body of the procedure |
-| `GUARD` | A reusable access rule | "Only managers may…" |
-| `POLICY` | A system-wide rule | A company policy |
-| `QUERY` | A saved search or report | A database report |
-| `ON` | A reaction to an event | "When X happens, do Y" |
-| `EMIT` | Fire a named event | Send an internal notification |
-| `STATE` | Valid statuses and transitions | A status workflow |
-| `SCHEDULE` | A recurring automatic task | A cron job or calendar reminder |
-| `@annotation` | A performance or behaviour hint | A sticky note for the AI |
+| Keyword         | What it describes                             | Plain-English analogy           |
+| --------------- | --------------------------------------------- | ------------------------------- |
+| `SHAPE`       | A type of record or object                    | A form template                 |
+| `FUNC`        | An action the system can perform              | A procedure in an SOP           |
+| `FLOW`        | A multi-step process                          | A flowchart                     |
+| `VALIDATE`    | Rules that must be true before an action runs | Pre-flight checklist            |
+| `DO`          | The steps that happen during an action        | The body of the procedure       |
+| `GUARD`       | A reusable access rule                        | "Only managers may…"           |
+| `POLICY`      | A system-wide rule                            | A company policy                |
+| `QUERY`       | A saved search or report                      | A database report               |
+| `ON`          | A reaction to an event                        | "When X happens, do Y"          |
+| `EMIT`        | Fire a named event                            | Send an internal notification   |
+| `STATE`       | Valid statuses and transitions                | A status workflow               |
+| `SCHEDULE`    | A recurring automatic task                    | A cron job or calendar reminder |
+| `@annotation` | A performance or behaviour hint               | A sticky note for the AI        |
 
 ---
 
@@ -147,32 +149,32 @@ A `SHAPE` describes a type of record — what fields it has, what type of inform
 
 ### Field types
 
-| Type | What it stores | Example value |
-| --- | --- | --- |
-| `String` | Text | `"hello"`, `"user@example.com"` |
-| `Int` | Whole number | `42`, `-7` |
-| `Float` | Decimal number | `9.99`, `3.14` |
-| `Bool` | True or false | `true`, `false` |
-| `UUID` | Unique ID | auto-generated |
-| `Timestamp` | Date and time | auto-generated |
-| `Enum[a, b, c]` | One of a fixed list of values | `draft`, `published` |
-| `List<Type>` | A collection of values | list of strings |
+| Type              | What it stores                | Example value                       |
+| ----------------- | ----------------------------- | ----------------------------------- |
+| `String`        | Text                          | `"hello"`, `"user@example.com"` |
+| `Int`           | Whole number                  | `42`, `-7`                      |
+| `Float`         | Decimal number                | `9.99`, `3.14`                  |
+| `Bool`          | True or false                 | `true`, `false`                 |
+| `UUID`          | Unique ID                     | auto-generated                      |
+| `Timestamp`     | Date and time                 | auto-generated                      |
+| `Enum[a, b, c]` | One of a fixed list of values | `draft`, `published`            |
+| `List<Type>`    | A collection of values        | list of strings                     |
 
 ### Field rules (constraints)
 
 Add these after the type to restrict what values are allowed:
 
-| Rule | Meaning |
-| --- | --- |
-| `required` | Must always have a value |
-| `optional` | May be left blank |
-| `unique` | No two records may share this value |
-| `auto` | The system fills this in automatically |
-| `default=X` | If not provided, use X |
-| `min=N` | Must be at least N (for numbers) or N characters long (for text) |
-| `max=N` | Must be at most N |
-| `immutable` | Cannot be changed after creation |
-| `indexed` | Optimise lookups on this field |
+| Rule          | Meaning                                                          |
+| ------------- | ---------------------------------------------------------------- |
+| `required`  | Must always have a value                                         |
+| `optional`  | May be left blank                                                |
+| `unique`    | No two records may share this value                              |
+| `auto`      | The system fills this in automatically                           |
+| `default=X` | If not provided, use X                                           |
+| `min=N`     | Must be at least N (for numbers) or N characters long (for text) |
+| `max=N`     | Must be at most N                                                |
+| `immutable` | Cannot be changed after creation                                 |
+| `indexed`   | Optimise lookups on this field                                   |
 
 ### Example
 
@@ -196,12 +198,12 @@ Think of `SHAPE Invoice` as defining the blank invoice form. Every invoice that 
 
 A `FUNC` describes something the system can *do*. It has up to four sections:
 
-| Section | What it does |
-| --- | --- |
+| Section      | What it does                                  |
+| ------------ | --------------------------------------------- |
 | `VALIDATE` | Checks that must pass before anything happens |
-| `DO` | The steps that run when all checks pass |
-| `RETURN` | What the function hands back to the caller |
-| `ON FAIL` | What happens if something goes wrong |
+| `DO`       | The steps that run when all checks pass       |
+| `RETURN`   | What the function hands back to the caller    |
+| `ON FAIL`  | What happens if something goes wrong          |
 
 ### VALIDATE — pre-flight checks
 
@@ -521,15 +523,15 @@ QUERY recentOrdersForUser(userId)
 
 ### QUERY clauses
 
-| Clause | What it does |
-| --- | --- |
-| `FROM` | Which record type to search |
-| `WHERE … AND …` | Filter conditions |
-| `ORDER BY … ASC/DESC` | Sort the results |
-| `LIMIT N` | Return at most N results |
-| `OFFSET N` | Skip the first N results (for pagination) |
-| `INCLUDE` | Also load related records |
-| `WITHIN N days` | Shorthand for date range filters |
+| Clause                   | What it does                              |
+| ------------------------ | ----------------------------------------- |
+| `FROM`                 | Which record type to search               |
+| `WHERE … AND …`      | Filter conditions                         |
+| `ORDER BY … ASC/DESC` | Sort the results                          |
+| `LIMIT N`              | Return at most N results                  |
+| `OFFSET N`             | Skip the first N results (for pagination) |
+| `INCLUDE`              | Also load related records                 |
+| `WITHIN N days`        | Shorthand for date range filters          |
 
 ---
 
@@ -625,14 +627,14 @@ STATE Invoice
 
 ### Reading a state machine
 
-| Part | Meaning |
-| --- | --- |
-| `STATES a, b, c` | The complete list of valid statuses |
-| `TRANSITION a -> b ON eventName` | Status changes from a to b when eventName happens |
-| `WHEN condition` | The transition only happens if this condition is also true |
-| `ANY -> cancelled` | From any status, can transition to cancelled |
-| `ON ENTER status` | Run these steps every time this status is entered |
-| `ON EXIT status` | Run these steps every time this status is left |
+| Part                               | Meaning                                                    |
+| ---------------------------------- | ---------------------------------------------------------- |
+| `STATES a, b, c`                 | The complete list of valid statuses                        |
+| `TRANSITION a -> b ON eventName` | Status changes from a to b when eventName happens          |
+| `WHEN condition`                 | The transition only happens if this condition is also true |
+| `ANY -> cancelled`               | From any status, can transition to cancelled               |
+| `ON ENTER status`                | Run these steps every time this status is entered          |
+| `ON EXIT status`                 | Run these steps every time this status is left             |
 
 ---
 
@@ -673,13 +675,13 @@ SCHEDULE monthlyBilling
 
 ### Timing options
 
-| Format | Example | Meaning |
-| --- | --- | --- |
-| `EVERY N unit` | `EVERY 15 minutes` | Run every N minutes/hours/days |
-| `AT "time daily"` | `AT "9:00 AM daily"` | Run every day at a specific time |
-| `AT "day of week time"` | `AT "Monday 8:00 AM"` | Run weekly on a specific day |
-| `AT "Nth of month time"` | `AT "1st of month 00:01 UTC"` | Run monthly |
-| `AT "first day of month time"` | `AT "first day of month 08:00 UTC"` | Run at start of month |
+| Format                           | Example                               | Meaning                          |
+| -------------------------------- | ------------------------------------- | -------------------------------- |
+| `EVERY N unit`                 | `EVERY 15 minutes`                  | Run every N minutes/hours/days   |
+| `AT "time daily"`              | `AT "9:00 AM daily"`                | Run every day at a specific time |
+| `AT "day of week time"`        | `AT "Monday 8:00 AM"`               | Run weekly on a specific day     |
+| `AT "Nth of month time"`       | `AT "1st of month 00:01 UTC"`       | Run monthly                      |
+| `AT "first day of month time"` | `AT "first day of month 08:00 UTC"` | Run at start of month            |
 
 ---
 
@@ -689,15 +691,15 @@ Annotations are optional notes you add to a `FUNC` or `FLOW` to give the AI extr
 
 You do not need to use these to write a valid spec — they are optional optimisations.
 
-| Annotation | What it means in plain English |
-| --- | --- |
-| `@cached ttl=5m key="..."` | Remember the result for 5 minutes; don't re-run for the same input |
-| `@retryable attempts=3 backoff=exponential` | If this fails, try up to 3 more times before giving up |
-| `@transaction` | All the steps in this function must succeed together, or none of them should happen |
-| `@idempotent key="..."` | If called twice with the same inputs, only actually run it once |
-| `@deprecated since="2.0" use=newFuncName` | This is old; use the new one instead |
-| `@observable metrics=[latency, error_rate]` | Track how long this takes and how often it fails |
-| `@rateLimit 10/minute per=userId` | Allow each user to call this at most 10 times per minute |
+| Annotation                                    | What it means in plain English                                                      |
+| --------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `@cached ttl=5m key="..."`                  | Remember the result for 5 minutes; don't re-run for the same input                  |
+| `@retryable attempts=3 backoff=exponential` | If this fails, try up to 3 more times before giving up                              |
+| `@transaction`                              | All the steps in this function must succeed together, or none of them should happen |
+| `@idempotent key="..."`                     | If called twice with the same inputs, only actually run it once                     |
+| `@deprecated since="2.0" use=newFuncName`   | This is old; use the new one instead                                                |
+| `@observable metrics=[latency, error_rate]` | Track how long this takes and how often it fails                                    |
+| `@rateLimit 10/minute per=userId`           | Allow each user to call this at most 10 times per minute                            |
 
 ### Examples
 
