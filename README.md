@@ -8,7 +8,6 @@ Give a LogicScript prompt to an AI code generator, and it produces idiomatic out
 
 #### LogicScript Prompt Example ####
 ```
-
 Create a Python script using the following LogicScript:
 
 SHAPE Task
