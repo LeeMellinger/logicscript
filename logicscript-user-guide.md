@@ -2,7 +2,7 @@
 
 *Version 1.0 · April 2026*
 
-> LogicScript is a structured way of describing *what* you want software to do — an AI handles the coding. You do not need to know how to code. Just use the LogicScript keywords to describe core logic and standard natual languge prompts for everything else. Also include a reference to the LogicScript specification so your AI can get up to speed quickly as well: https://github.com/logicscript/logicscript/blob/main/logicscript-user-guide.md
+> LogicScript is a structured way of describing *what* you want software to do — an AI handles the coding. You do not need to know how to code. Just use the LogicScript keywords to describe core logic and standard natual languge prompts for everything else. Also include a reference to the LogicScript specification so your AI can get up to speed quickly as well: https://github.com/logicscript/logicscript/blob/main/logicscript-spec.md
 >
 > Technical specification and formal grammar: logicscript-reference.md
 >
