@@ -6,6 +6,41 @@ LogicScript is an AI generated, agnostic prompt language for describing software
 
 Give a LogicScript prompt to an AI code generator, and it produces idiomatic output in any target language: TypeScript, Python, Java, Rust, SQL, C++, and more.
 
+#### LogicScript Prompt Example ####
+```
+
+Create a Python script using the following LogicScript:
+
+SHAPE Task
+  id        : UUID      required auto
+  title     : String    required max=200
+  done      : Bool      default=false
+  createdAt : Timestamp auto
+
+FUNC addTask(title)
+  VALIDATE
+    title not empty
+  DO
+    task = Task.create(title)
+  RETURN task
+
+FUNC completeTask(taskId)
+  VALIDATE
+    taskId exists in Task
+    task.done IS false
+  DO
+    task.done = true
+  RETURN task
+
+QUERY openTasks
+  FROM Task
+  WHERE done IS false
+  ORDER BY createdAt ASC
+
+REFERENCE: https://github.com/logicscript/logicscript/blob/main/logicscript-spec.md
+
+```
+
 ---
 
 ## When to use LogicScript
