@@ -2,7 +2,7 @@
 
 *Version 1.0 · April 2026*
 
-> This document collects all LogicScript examples — from beginner-friendly power user specs through to complete multi-language code output. For the language specification and formal grammar, see **logicscript-reference.md**. For a plain-English guide to writing specs, see **logicscript-power-user-guide.md**.
+> This document collects all LogicScript examples — from beginner-friendly power user prompts through to complete multi-language code output. For the language specification and formal grammar, see **logicscript-reference.md**. For a plain-English guide to writing prompts, see **logicscript-power-user-guide.md**.
 
 ---
 
@@ -37,17 +37,17 @@
 
 ## Power user examples
 
-These examples are written for non-programmers. Each one is a complete, usable LogicScript specification — plain enough to read and write without a technical background, precise enough to hand directly to an AI for implementation.
+These examples are written for non-programmers. Each one is a complete, usable LogicScript prompt — plain enough to read and write without a technical background, precise enough to hand directly to an AI for implementation.
 
-**How to use these:** Copy an example, adapt it to your situation, then paste it into an AI chat with the instruction: *"Implement this LogicScript specification in [your language or framework]."*
+**How to use these:** Copy an example, adapt it to your situation, then paste it into an AI chat with the instruction: *"Implement this LogicScript prompt in [your language or framework]."*
 
 ---
 
 ### 1. Greet a user
 
-The simplest possible spec — a function that takes a name and returns a greeting.
+The simplest possible prompt — a function that takes a name and returns a greeting.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 FUNC greet(name)
@@ -71,7 +71,7 @@ FUNC greet(name)
 
 A contact form that validates the submission and sends it to the right team.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE ContactMessage
@@ -111,7 +111,7 @@ ON ContactFormSubmitted
 
 A booking system that checks availability before confirming a reservation.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE RoomBooking
@@ -153,7 +153,7 @@ ON RoomBooked
 
 An expense approval workflow with basic validation and manager notification.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE ExpenseReport
@@ -198,7 +198,7 @@ ON ExpenseSubmitted
 
 A content publishing workflow with draft → review → published status tracking.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE BlogPost
@@ -259,7 +259,7 @@ ON PostPublished
 
 An inventory rule that fires automatically when stock drops below a threshold.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE Product
@@ -304,7 +304,7 @@ ON LowStock
 
 A multi-step process that runs when a new employee joins.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 FLOW OnboardNewEmployee(employeeId)
@@ -346,7 +346,7 @@ ON EmployeeOnboarded
 
 A status workflow that controls how an invoice moves through its lifecycle.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE Invoice
@@ -412,7 +412,7 @@ SCHEDULE checkOverdueInvoices
 
 A basic helpdesk ticket tracker with assignment and escalation.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE SupportTicket
@@ -490,7 +490,7 @@ POLICY EscalationPolicy
 
 A recurring billing job that runs on the first of each month.
 
-> *Prompt: "Implement this LogicScript specification in your preferred language or framework."*
+> *Prompt: "Implement this LogicScript prompt in your preferred language or framework."*
 
 ```logicscript
 SHAPE Subscription
@@ -540,16 +540,16 @@ POLICY BillingRetry
 Use the following prompt pattern when passing LogicScript to an AI model:
 
 ```
-Implement the following LogicScript specification in [TARGET LANGUAGE].
+Implement the following LogicScript prompt in [TARGET LANGUAGE].
 
 Rules:
 - Honor every VALIDATE condition as a precondition check.
 - Map ON FAIL clauses to the language's error/exception mechanism.
 - Translate EMIT to the appropriate event or message-bus call.
 - Add inline comments for non-obvious decisions.
-- Do not add behavior not described in the specification.
+- Do not add behavior not described in the prompt.
 
-[LOGICSCRIPT SPECIFICATION]
+[LOGICSCRIPT PROMPT]
 ```
 
 ---
@@ -579,7 +579,7 @@ JavaScript output targets Node.js with ES modules and `async`/`await`. `SHAPE` b
 
 ## Example: createUser
 
-> *Prompt: "Implement this LogicScript specification in JavaScript (Node.js)."*
+> *Prompt: "Implement this LogicScript prompt in JavaScript (Node.js)."*
 
 ```logicscript
 FUNC createUser(email, password, name)
@@ -643,7 +643,7 @@ export async function createUser(email, password, name) {
 
 ## Example: parallel FLOW
 
-> *Prompt: "Implement this LogicScript specification in JavaScript (Node.js)."*
+> *Prompt: "Implement this LogicScript prompt in JavaScript (Node.js)."*
 
 ```logicscript
 FLOW GenerateDashboard(userId)
@@ -700,7 +700,7 @@ Python output follows idiomatic Python 3.11+ conventions. `SHAPE` becomes a `@da
 
 ## Example: createUser
 
-> *Prompt: "Implement this LogicScript specification in Python."*
+> *Prompt: "Implement this LogicScript prompt in Python."*
 
 ```logicscript
 FUNC createUser(email, password, name)
@@ -839,7 +839,7 @@ SQL output covers two complementary concerns: **schema DDL** derived from `SHAPE
 
 The following `SHAPE` produces a `CREATE TABLE` statement with appropriate column types, constraints, and defaults.
 
-> *Prompt: "Implement this LogicScript specification in SQL (PostgreSQL)."*
+> *Prompt: "Implement this LogicScript prompt in SQL (PostgreSQL)."*
 
 ```logicscript
 SHAPE User
@@ -868,7 +868,7 @@ CREATE INDEX idx_users_role  ON users (role);
 
 ## Example: createUser FUNC → stored procedure
 
-> *Prompt: "Implement this LogicScript specification in SQL (PostgreSQL)."*
+> *Prompt: "Implement this LogicScript prompt in SQL (PostgreSQL)."*
 
 ```logicscript
 FUNC createUser(email, password, name)
@@ -1449,7 +1449,7 @@ private:
 
 ## Multi-language examples
 
-The following examples show the same LogicScript specification compiled to all six output languages.
+The following examples show the same LogicScript prompt compiled to all six output languages.
 
 ### createUser
 
@@ -1457,7 +1457,7 @@ The following examples show the same LogicScript specification compiled to all s
 
 The following LogicScript is used as input for both output examples below.
 
-> *Prompt: "Implement this LogicScript specification in [your target language]."*
+> *Prompt: "Implement this LogicScript prompt in [your target language]."*
 
 ```logicscript
 SHAPE User
@@ -1731,7 +1731,7 @@ User UserService::create_user(
 
 ## Example: transferFunds function
 
-> *Prompt: "Implement this LogicScript specification in [your target language]."*
+> *Prompt: "Implement this LogicScript prompt in [your target language]."*
 
 ```logicscript
 @transaction
@@ -1988,7 +1988,7 @@ TransferResult PaymentService::transfer_funds(
 
 ## Parallel flow example
 
-> *Prompt: "Implement this LogicScript specification in [your target language]."*
+> *Prompt: "Implement this LogicScript prompt in [your target language]."*
 
 ```logicscript
 FLOW GenerateDashboard(userId)
@@ -2183,7 +2183,7 @@ DashboardResult DashboardService::generate_dashboard(const std::string& user_id)
 
 ## Example
 
-> *Prompt: "Implement this LogicScript specification in [your target language]."*
+> *Prompt: "Implement this LogicScript prompt in [your target language]."*
 
 ```logicscript
 STATE Order
@@ -2516,7 +2516,7 @@ private:
 
 A complete user authentication module demonstrating most LogicScript constructs working together. This example is suitable for passing directly to an AI code generator.
 
-> *Prompt: "Implement this LogicScript specification in [your target language]."*
+> *Prompt: "Implement this LogicScript prompt in [your target language]."*
 
 ```logicscript
 MODULE AuthService

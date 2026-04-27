@@ -2,20 +2,20 @@
 
 **Version 1.0**
 
-This document is a complete, concise specification of LogicScript — a prompt language for describing software logic to AI systems. Reference this document when implementing a LogicScript specification to understand syntax, keywords, types, and mapping rules. Reference this document using it's url when entering your own logicscript specification.
+This document is a complete, concise specification of LogicScript — a prompt language for describing software logic to AI systems. Reference this document when implementing a LogicScript prompt to understand syntax, keywords, types, and mapping rules. Reference this document using it's url when creating your own logicscript prompt.
 
 ---
 
 ## Purpose and model
 
-LogicScript sits between plain English and production code. It expresses *what* a system should do without prescribing *how*. When you receive a LogicScript specification:
+LogicScript sits between plain English and production code. It expresses *what* a system should do without prescribing *how*. When you receive a LogicScript prompt:
 
 1. Read every `VALIDATE` block as a set of hard preconditions — fail fast before any side effects.
 2. Map `ON FAIL THROW ErrorName` to the target language's idiomatic exception mechanism.
 3. Translate `EMIT EventName WITH payload` to an event bus, message broker, or similar publish mechanism.
 4. Honour `@transaction` by wrapping all steps in a database transaction with automatic rollback on failure.
 5. Treat plain-English conditions and steps as implementation intent — infer the most idiomatic code for the target language.
-6. Do not add behaviour not described in the specification.
+6. Do not add behaviour not described in the prompt.
 7. Add inline comments referencing the LogicScript construct each code block implements.
 
 ---
@@ -452,7 +452,7 @@ DENY  action WHEN condition
 
 ## Implementation rules for AI
 
-When implementing a LogicScript specification, apply these rules in order:
+When implementing a LogicScript prompt, apply these rules in order:
 
 1. **VALIDATE → preconditions first.** Generate all validation checks before any `DO` steps. Each failing check must return or throw immediately without executing side effects.
 
@@ -531,4 +531,4 @@ POLICY LoginProtection
 
 ---
 
-*This specification document is designed for use as context in AI prompts. Include it before any LogicScript specification you want implemented.*
+*This specification document is designed for use as context in AI prompts. Include it before any LogicScript prompt you want implemented.*

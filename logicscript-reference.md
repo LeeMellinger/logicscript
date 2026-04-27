@@ -46,14 +46,14 @@
 
 LogicScript is a prompt language for describing software logic to AI systems. It occupies the space between plain English (ambiguous, imprecise) and production code (over-specified, language-locked) — letting you communicate *what* a system should do without prescribing *how*.
 
-Use LogicScript to specify business logic, data structures, authorization rules, state machines, and scheduled jobs. Give a LogicScript specification to an AI code generator, and it produces idiomatic output in any target language.
+Use LogicScript to specify business logic, data structures, authorization rules, state machines, and scheduled jobs. Give a LogicScript prompt to an AI code generator, and it produces idiomatic output in any target language.
 
 ## When to use LogicScript
 
 LogicScript is most useful when you want to:
 
 - Rapidly prototype logic without committing to a specific language or framework.
-- Create a single, language-agnostic specification that generates code in multiple target languages.
+- Create a single, language-agnostic prompt that generates code in multiple target languages.
 - Communicate system design to AI assistants with minimal ambiguity.
 - Document intended behavior in a format that is both human-readable and machine-processable.
 
@@ -76,7 +76,7 @@ LogicScript makes three intentional trade-offs:
 - **Indentation over syntax.** Structure is expressed through indentation — no braces, semicolons, or end keywords.
 - **Declarative over imperative.** Describe outcomes and constraints, not steps. Reserve the `DO` block for side effects that require explicit ordering.
 
-> **Note:** LogicScript is a specification language, not an execution runtime. It has no interpreter. Its output is always AI-generated code in a target language such as JavaScript, Python, Go, or SQL.
+> **Note:** LogicScript is a prompt language, not an execution runtime. It has no interpreter. Its output is always AI-generated code in a target language such as JavaScript, Python, Go, or SQL.
 
 ---
 
@@ -86,7 +86,7 @@ LogicScript makes three intentional trade-offs:
 
 *Guide*
 
-Write your first LogicScript specification and generate working code in under five minutes.
+Write your first LogicScript prompt and generate working code in under five minutes.
 
 ## Step 1: Define a data shape
 
@@ -122,7 +122,7 @@ FUNC createUser(email, password, name)
   ON FAIL THROW ValidationError
 ```
 
-## Step 3: Pass the specification to an AI
+## Step 3: Pass the prompt to an AI
 
 Include the LogicScript in your prompt with a target-language instruction:
 
@@ -130,7 +130,7 @@ Include the LogicScript in your prompt with a target-language instruction:
 
 The AI produces idiomatic code. See Generating output for examples and prompt templates.
 
-> **Tip:** You can mix LogicScript with plain-English prose in the same specification. If a constraint is hard to express in LogicScript syntax, write it out in plain English directly inside the relevant block.
+> **Tip:** You can mix LogicScript with plain-English prose in the same prompt. If a constraint is hard to express in LogicScript syntax, write it out in plain English directly inside the relevant block.
 
 ---
 
@@ -175,7 +175,7 @@ FUNC getUser(userId)
   ...
 ```
 
-## Plain English in specifications
+## Plain English in prompts
 
 LogicScript is intentionally incomplete. Any condition or behavior that is difficult to express in structured syntax can be written as plain English inside any block.
 

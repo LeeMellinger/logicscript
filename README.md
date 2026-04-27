@@ -4,7 +4,7 @@
 
 LogicScript is an AI generated, agnostic prompt language for describing software logic to AI systems. It occupies the space between plain English (ambiguous, imprecise) and production code (over-specified, language-locked) — letting you communicate *what* a system should do without prescribing *how*.
 
-Give a LogicScript specification to an AI code generator, and it produces idiomatic output in any target language: TypeScript, Python, Java, Rust, SQL, C++, and more.
+Give a LogicScript prompt to an AI code generator, and it produces idiomatic output in any target language: TypeScript, Python, Java, Rust, SQL, C++, and more.
 
 ```
 Prompt: "Create a prompt language for describing software logic to AI."
@@ -15,11 +15,11 @@ Prompt: "Create a prompt language for describing software logic to AI."
 ## When to use LogicScript
 
 - Rapidly prototype logic without committing to a specific language or framework.
-- Create a single, language-agnostic specification that generates code in multiple target languages.
+- Create a single, language-agnostic prompt that generates code in multiple target languages.
 - Communicate system design to AI assistants with minimal ambiguity.
 - Document intended behavior in a format that is both human-readable and machine-processable.
 
-> **Note:** LogicScript is a specification language, not an execution runtime. It has no interpreter. Its output is always AI-generated code in a target language.
+> **Note:** LogicScript is a prompt language, not an execution runtime. It has no interpreter. Its output is always AI-generated code in a target language.
 
 ---
 
@@ -28,16 +28,16 @@ Prompt: "Create a prompt language for describing software logic to AI."
 Use this pattern for consistent AI output:
 
 ```
-Implement the following LogicScript specification in [TARGET LANGUAGE].
+Implement the following LogicScript prompt in [TARGET LANGUAGE].
 
 Rules:
 - Honor every VALIDATE condition as a precondition check.
 - Map ON FAIL clauses to the language's error/exception mechanism.
 - Translate EMIT to the appropriate event or message-bus call.
 - Add inline comments for non-obvious decisions.
-- Do not add behavior not described in the specification.
+- Do not add behavior not described in the prompt.
 
-[LOGICSCRIPT SPECIFICATION]
+[LOGICSCRIPT PROMPT]
 ```
 
 ---
@@ -78,12 +78,12 @@ FUNC createUser(email, password, name)
   ON FAIL THROW ValidationError
 ```
 
-### Step 3: Pass the specification to an AI
+### Step 3: Pass the prompt to an AI
 
 Include the LogicScript in your prompt with a target-language instruction:
 
 ```
-Implement the following LogicScript specification in TypeScript using
+Implement the following LogicScript prompt in TypeScript using
 Express and Prisma. Follow the validation and error-handling contracts
 exactly. Use async/await throughout.
 
@@ -94,7 +94,7 @@ exactly. Use async/await throughout.
 
 The AI produces idiomatic code that honours every `VALIDATE` condition, maps `ON FAIL` to the language's error mechanism, and translates `EMIT` to the appropriate event call.
 
-> **Tip:** You can mix LogicScript with plain-English prose in the same specification. If a constraint is hard to express in LogicScript syntax, write it out in plain English directly inside the relevant block.
+> **Tip:** You can mix LogicScript with plain-English prose in the same prompt. If a constraint is hard to express in LogicScript syntax, write it out in plain English directly inside the relevant block.
 
 ---
 
@@ -141,7 +141,7 @@ FUNC getUser(userId)
   ...
 ```
 
-### Plain English in specifications
+### Plain English in prompts
 
 LogicScript is intentionally incomplete. Any condition or behavior that is difficult to express in structured syntax can be written as plain English inside any block.
 
@@ -183,11 +183,11 @@ LogicScript makes three intentional trade-offs:
 
 ## Python example
 
-The simplest possible LogicScript specification — a function that prints a greeting — illustrates how even trivial logic maps cleanly to generated output.
+The simplest possible LogicScript prompt — a function that prints a greeting — illustrates how even trivial logic maps cleanly to generated output.
 
 > *Prompt: "Implement this LogicScript in Python"*
 
-### LogicScript specification
+### LogicScript prompt
 
 ```
 FUNC greet(name)
@@ -231,11 +231,11 @@ if __name__ == "__main__":
 
 ## TypeScript example
 
-The following LogicScript specification produces the TypeScript implementation below it when passed to an AI with the prompt
+The following LogicScript prompt produces the TypeScript implementation below it when passed to an AI with the prompt
 
 > *Prompt: "Implement this LogicScript in TypeScript (Node.js). Use Prisma for database access, bcryptjs for password hashing, and a simple EventEmitter for events."*
 
-### LogicScript specification
+### LogicScript prompt
 
 ```
 MODULE AuthService

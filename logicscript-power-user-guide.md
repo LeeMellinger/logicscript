@@ -2,7 +2,7 @@
 
 *Version 1.0 · April 2026*
 
-> This guide is for power users who want to write LogicScript specifications without a programming background. You do not need to know how to code. LogicScript is a structured way of describing *what* you want software to do — an AI handles the coding.
+> This guide is for power users who want to write LogicScript prompts without a programming background. You do not need to know how to code. LogicScript is a structured way of describing *what* you want software to do — an AI handles the coding.
 >
 > Technical specification and formal grammar: logicscript-reference.md
 >
@@ -14,7 +14,7 @@
 
 - [What is LogicScript?](#what-is-logicscript)
 - [How it works](#how-it-works)
-- [Writing your first spec](#writing-your-first-spec)
+- [Writing your first prompt](#writing-your-first-prompt)
 - [Building blocks at a glance](#building-blocks-at-a-glance)
 - [Describing data: SHAPE](#describing-data-shape)
 - [Describing actions: FUNC](#describing-actions-func)
@@ -28,7 +28,7 @@
 - [Tracking status: STATE](#tracking-status-state)
 - [Scheduled tasks: SCHEDULE](#scheduled-tasks-schedule)
 - [Performance hints: Annotations](#performance-hints-annotations)
-- [Tips for better specs](#tips-for-better-specs)
+- [Tips for better prompts](#tips-for-better-prompts)
 - [Quick reference card](#quick-reference-card)
 
 ---
@@ -73,18 +73,18 @@ FUNC login(email, password)
 
 ## How it works
 
-1. **You write a spec** in LogicScript describing the system's rules and behaviors.
-2. **You give the spec to an AI** (Claude, GPT-4, etc.) with an instruction like:*"Implement this LogicScript specification in Python."*
-3. **The AI produces working code** that follows your spec exactly.
+1. **You write a prompt** in LogicScript describing the system's rules and behaviors.
+2. **You give the prompt to an AI** (Claude, GPT-4, etc.) with an instruction like:*"Implement this LogicScript prompt in Python."*
+3. **The AI produces working code** that follows your prompt exactly.
 4. A developer reviews and deploys the code.
 
 You stay in control of the *rules*. The AI handles the *implementation*.
 
 ---
 
-## Writing your first spec
+## Writing your first prompt
 
-A LogicScript spec looks like this. Notice:
+A LogicScript prompt looks like this. Notice:
 
 - **Keywords are ALL CAPS** —`SHAPE`,`FUNC`,`VALIDATE`, etc.
 - **Indentation matters** — two spaces per level, like a bullet list
@@ -119,7 +119,7 @@ FUNC buyProduct(productId, quantity, userId)
   ON FAIL THROW PurchaseError
 ```
 
-That is a complete, usable specification. An AI can turn that into production code in any language.
+That is a complete, usable prompt. An AI can turn that into production code in any language.
 
 ---
 
@@ -288,7 +288,7 @@ FUNC submitExpenseReport(reportId, userId)
 
 ## Describing processes: FLOW
 
-A `FLOW` is for multi-step processes where the steps have meaningful names and need to be clear in the specification. Use a `FLOW` instead of a `FUNC` when:
+A `FLOW` is for multi-step processes where the steps have meaningful names and need to be clear in the prompt. Use a `FLOW` instead of a `FUNC` when:
 
 - There are 3 or more distinct stages
 - Some stages might run at the same time
@@ -689,7 +689,7 @@ SCHEDULE monthlyBilling
 
 Annotations are optional notes you add to a `FUNC` or `FLOW` to give the AI extra guidance about how it should be implemented. They start with `@` and go on the line *before* the function.
 
-You do not need to use these to write a valid spec — they are optional optimisations.
+You do not need to use these to write a valid prompt — they are optional optimisations.
 
 | Annotation                                    | What it means in plain English                                                      |
 | --------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -729,7 +729,7 @@ FUNC transferBalance(fromAccountId, toAccountId, amount)
 
 ---
 
-## Tips for better specs
+## Tips for better prompts
 
 ### Do mix plain English and LogicScript
 
